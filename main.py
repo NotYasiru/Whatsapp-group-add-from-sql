@@ -2,6 +2,9 @@ import webbrowser
 import pyautogui
 import time
 import pywhatkit
+from datetime import datetime,timedelta
+import clipboard
+
 
 # open whatsapp web
 webbrowser.open('https://web.whatsapp.com/')
@@ -40,3 +43,16 @@ time.sleep(1)
 pyautogui.click(1449,425)
 
 time.sleep(1)
+
+
+# get time after 1min
+now = datetime.now()
+now_plus_1 = now + timedelta(minutes = 1)
+now_plusH = now_plus_1.strftime("%H")
+now_plusM = now_plus_1.strftime("%M")
+
+# get invite link from clipboard
+msg = clipboard.paste()
+
+# send msg
+pywhatkit.sendwhatmsg("+94775667922", msg, now_plusH, now_plusM)
