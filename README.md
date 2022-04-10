@@ -1,3 +1,3 @@
 <h1>Add Whatsapp group to using python</h1>
 <hr>
-<h2>Using mysql</h2>
+<h2>Python, mysql</h2>
