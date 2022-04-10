@@ -48,8 +48,8 @@ time.sleep(1)
 # get time after 1min
 now = datetime.now()
 now_plus_1 = now + timedelta(minutes = 1)
-now_plusH = now_plus_1.strftime("%H")
-now_plusM = now_plus_1.strftime("%M")
+now_plusH = int(now_plus_1.strftime("%H"))
+now_plusM = int(now_plus_1.strftime("%M"))
 
 # get invite link from clipboard
 msg = clipboard.paste()
