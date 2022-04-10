@@ -6,6 +6,8 @@ from datetime import datetime,timedelta
 import clipboard
 
 
+phoneNumber = "+94775667922"
+
 # open whatsapp web
 webbrowser.open('https://web.whatsapp.com/')
 
@@ -55,4 +57,4 @@ now_plusM = int(now_plus_1.strftime("%M"))
 msg = clipboard.paste()
 
 # send msg
-pywhatkit.sendwhatmsg("+94775667922", msg, now_plusH, now_plusM)
+pywhatkit.sendwhatmsg(phoneNumber, msg, now_plusH, now_plusM)
