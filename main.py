@@ -58,3 +58,9 @@ msg = clipboard.paste()
 
 # go to whatsapp profile with msg
 pyautogui.click(256,51)
+pyautogui.typewrite("https://web.whatsapp.com/send?phone=+94775667922&text=itworkedUsingpyAutoGUI")
+pyautogui.press('enter') 
+
+# send msg
+pyautogui.click(1287,1009)
+pyautogui.press('enter')
