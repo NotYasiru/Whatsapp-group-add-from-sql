@@ -1,13 +1,19 @@
-# import mysql.connector
+import mysql.connector
 
-# db = mysql.connector.connect(
-#     host = "localhost",
-#     user = "root",
-#     password=""
-# )
-# # print(db)
+mydb = mysql.connector.connect(
+    host = "localhost",
+    user = "root",
+    password="",
+    database="whatsapp-add"
+)
+mycursor = mydb.cursor()
 
-# mycursor = mydb.cursor()
+mycursor.execute("SELECT phone_no FROM submit_form")
+
+myresult = mycursor.fetchall()
+str(myresult)[3:-4]
+
+# mycursor = db.cursor()
 
 
 # import webbrowser
