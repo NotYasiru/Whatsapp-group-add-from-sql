@@ -11,7 +11,7 @@ phoneNumber = "+94775667922"
 # open whatsapp web
 webbrowser.open('https://web.whatsapp.com/')
 
-time.sleep(15)
+time.sleep(20)
 # print(pyautogui.position())
 
 # search group
@@ -56,5 +56,5 @@ now_plusM = int(now_plus_1.strftime("%M"))
 # get invite link from clipboard
 msg = clipboard.paste()
 
-# send msg
-pywhatkit.sendwhatmsg(phoneNumber, msg, now_plusH, now_plusM)
+# go to whatsapp profile with msg
+pyautogui.click(256,51)
