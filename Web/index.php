@@ -15,8 +15,36 @@
         </h3>
         <h3>
             <span>Phone Number : </span>
-            <input type="text" name="phoneno">
+            <input type="number" name="phoneno">
+        </h3>
+        <h3>
+            <input type="submit" name="submit" value="submit">
         </h3>
     </form>
 </body>
 </html>
+<?php
+
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "whatsapp-add";
+
+    $connect = new mysqli($servername, 
+    $username, $password, $dbname);
+
+    require('welcome.php');
+    $uname = $_POST['uname'];
+    $phoneNo = $_POST['phoneno'];
+
+ 
+    $sqlquery = "INSERT INTO submit_form (`uname`, `phone_no`) VALUES 
+    (".$uname."', '".$phoneNo."')";
+  
+    if ($connect->query($sql) === TRUE) {
+        echo "record inserted successfully";
+    } else {
+        echo "Error: " . $sql . "<br>" . $conn->error;
+    }
+
+?>
