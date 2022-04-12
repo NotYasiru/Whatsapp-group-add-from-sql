@@ -39,7 +39,7 @@
          ?><h2>
          <?php 
          echo "Hi $uname<br>
-         You will add whatsapp group soon!!"; ?></h2><?php
+         You will be add to the whatsapp group soon!!"; ?></h2><?php
       }else {
          echo "Error: " . $sql . ":-" . mysqli_error($conn);
       }
