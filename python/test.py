@@ -1,20 +1,33 @@
 import mysql.connector
 
-mydb = mysql.connector.connect(
+db = mysql.connector.connect(
     host = "localhost",
     user = "root",
     password="",
     database="whatsapp-add"
 )
-mycursor = mydb.cursor()
+cursor = db.cursor()
 
-mycursor.execute("SELECT phone_no FROM submit_form")
+# cursor.execute("SELECT phone_no FROM submit_form WHERE id ")
 
-myresult = mycursor.fetchall()
-str(myresult)[3:-4]
 
+# cursor.execute("SELECT FROM submit_form")
+
+# result = cursor.fetchall()
+# phoneNumbers = str(result)[3:-4]
+# print(phoneNumbers)
 # mycursor = db.cursor()
 
+sql = "SELECT phone_no FROM submit_form submit_form WHERE id"
+
+cursor.execute(sql)
+
+result = cursor.fetchall()
+# print(phoneNumbers)
+for x in result:
+  phoneNum = x
+  phoneNum = str(x)[2:-3]
+  print(phoneNum)
 
 # import webbrowser
 

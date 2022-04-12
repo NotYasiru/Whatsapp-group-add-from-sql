@@ -1,12 +1,21 @@
 import webbrowser
 import pyautogui
 import time
-import pywhatkit
 from datetime import datetime,timedelta
 import clipboard
+import mysql.connector
 
-
-phoneNumber = "+94775667922"
+# database
+db = mysql.connector.connect(
+    host = "localhost",
+    user = "root",
+    password="",
+    database="whatsapp-add"
+)
+cursor = db.cursor()
+sql = "SELECT phone_no FROM submit_form submit_form WHERE id"
+cursor.execute(sql)
+result = cursor.fetchall()
 
 # open whatsapp web
 webbrowser.open('https://web.whatsapp.com/')
@@ -56,13 +65,21 @@ now_plusM = int(now_plus_1.strftime("%M"))
 # get invite link from clipboard
 msg = clipboard.paste()
 
-# go to whatsapp profile with msg
-pyautogui.click(256,51)
-pyautogui.typewrite("https://web.whatsapp.com/send?phone=+94775667922&text=itworkedUsingpyAutoGUI")
-pyautogui.press('enter') 
-
 time.sleep(10)
 
+# go to whatsapp profile with msg
+for x in result:
+    phoneNum = x
+    phoneNum = str(x)[2:-3]
+    print(phoneNum)
+    pyautogui.click(256,51)
+    pyautogui.typewrite("https://web.whatsapp.com/send?phone="+phoneNum+"&text="+msg)
+    pyautogui.press('enter')
+    
+    time.sleep(10)
+
+    pyautogui.click(1287,1009)
+    pyautogui.press('enter')
+
+    time.sleep(10)
 # send msg
-pyautogui.click(1287,1009)
-pyautogui.press('enter')
