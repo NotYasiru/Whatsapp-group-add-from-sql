@@ -83,7 +83,6 @@ def startbtn():
       pyautogui.press('enter')
 
       time.sleep(5)
-
 # GUI
 root.title("Whatsapp Groups Add")
 width = 496

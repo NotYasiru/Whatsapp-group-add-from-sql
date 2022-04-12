@@ -49,12 +49,13 @@
 # grpNameinpt = Entry(lf, font=('Helvetica', 24))
 # grpNameinpt.pack(pady=5, padx=20)
 
-# def startbtn():
-  # grpName = grpNameinpt.get()
-  # print(grpName)
-  # root.destroy()
+# def submitGrpName():
+#   grpName = grpNameinpt.get()
+#   print(grpName)
+#   gen_pwd.pack_forget()
 
-# gen_pwd = Button(lf, text="Start", command=startbtn, font=('Arial', 12), padx=5, pady=5)
+
+# gen_pwd = Button(lf, text="Start", command=submitGrpName, font=('Arial', 12), padx=5, pady=5)
 # gen_pwd.pack(pady=10)
 
 # root.mainloop()
