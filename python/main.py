@@ -4,6 +4,9 @@ import time
 from datetime import datetime,timedelta
 import clipboard
 import mysql.connector
+from tkinter import *
+
+root = Tk()
 
 # database
 db = mysql.connector.connect(
@@ -17,69 +20,84 @@ sql = "SELECT phone_no FROM submit_form submit_form WHERE id"
 cursor.execute(sql)
 result = cursor.fetchall()
 
-# open whatsapp web
-webbrowser.open('https://web.whatsapp.com/')
+# gui def
+def startbtn():
+  grpName = grpNameinpt.get()
+  root.destroy()
 
-time.sleep(20)
-# print(pyautogui.position())
+  # open whatsapp web
+  webbrowser.open('https://web.whatsapp.com/')
 
-# search group
-pyautogui.click(457,266)
-pyautogui.typewrite("texting")
+  time.sleep(20)
+  # print(pyautogui.position())
 
-time.sleep(1)
+  # search group
+  pyautogui.click(457,266)
+  pyautogui.typewrite(grpName)
 
-# select group
-pyautogui.click(458,371)
+  time.sleep(1)
 
-time.sleep(1)
+  # select group
+  pyautogui.click(458,371)
 
-# go to group settings
-pyautogui.click(1116,123)
+  time.sleep(1)
 
-time.sleep(1)
+  # go to group settings
+  pyautogui.click(1116,123)
 
-# scroll down
-pyautogui.click(1591,471)
-pyautogui.hscroll(-1000)
+  time.sleep(1)
 
-time.sleep(1)
+  # scroll down
+  pyautogui.click(1591,471)
+  pyautogui.hscroll(-1000)
 
-# click on invite link btn
-pyautogui.click(1414,767)
+  time.sleep(1)
 
-time.sleep(1)
+  # click on invite link btn
+  pyautogui.click(1414,767)
 
-#copy link
-pyautogui.click(1449,425)
+  time.sleep(1)
 
-time.sleep(1)
+  #copy link
+  pyautogui.click(1449,425)
 
+  time.sleep(1)
 
-# get time after 1min
-now = datetime.now()
-now_plus_1 = now + timedelta(minutes = 1)
-now_plusH = int(now_plus_1.strftime("%H"))
-now_plusM = int(now_plus_1.strftime("%M"))
+  # get invite link from clipboard
+  msg = clipboard.paste()
 
-# get invite link from clipboard
-msg = clipboard.paste()
+  time.sleep(2)
 
-time.sleep(10)
+  # go to whatsapp profile with msg
+  for x in result:
+      phoneNum = x
+      phoneNum = str(x)[2:-3]
+      print(phoneNum)
+      pyautogui.click(256,51)
+      pyautogui.typewrite("https://web.whatsapp.com/send?phone="+phoneNum+"&text="+msg)
+      pyautogui.press('enter')
 
-# go to whatsapp profile with msg
-for x in result:
-    phoneNum = x
-    phoneNum = str(x)[2:-3]
-    print(phoneNum)
-    pyautogui.click(256,51)
-    pyautogui.typewrite("https://web.whatsapp.com/send?phone="+phoneNum+"&text="+msg)
-    pyautogui.press('enter')
-    
-    time.sleep(10)
+      time.sleep(10)
 
-    pyautogui.click(1287,1009)
-    pyautogui.press('enter')
+      pyautogui.click(1287,1009)
+      pyautogui.press('enter')
 
-    time.sleep(10)
-# send msg
+      time.sleep(5)
+
+# GUI
+root.title("Whatsapp Groups Add")
+width = 496
+height = 200
+root.geometry("%dx%d" % (width, height))
+root.resizable(False,False)
+
+lf = LabelFrame(root, text="What is your group name? ", font=('arial bold', 18))
+lf.pack(pady=10)
+
+grpNameinpt = Entry(lf, font=('Helvetica', 24))
+grpNameinpt.pack(pady=5, padx=20)
+
+statBtn = Button(lf, text="Start", command=startbtn, font=('Arial', 12), padx=5, pady=5)
+statBtn.pack(pady=10)
+
+root.mainloop()
