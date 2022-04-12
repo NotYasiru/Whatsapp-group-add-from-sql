@@ -23,7 +23,6 @@
     </form>
 
 <?php
-
     $servername='localhost';
     $username='root';
     $password='';
@@ -44,9 +43,6 @@
          echo "Error: " . $sql . ":-" . mysqli_error($conn);
       }
     }
-
-
-
 ?>
 </body>
 </html>
