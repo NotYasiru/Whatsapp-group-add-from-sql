@@ -49,12 +49,12 @@ def startbtn():
 
   # scroll down
   pyautogui.click(1591,471)
-  pyautogui.hscroll(-1000)
+  pyautogui.hscroll(-400)
 
   time.sleep(1)
 
   # click on invite link btn
-  pyautogui.click(1414,767)
+  pyautogui.click(1351,983)
 
   time.sleep(1)
 
